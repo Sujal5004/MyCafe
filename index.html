@@ -4,47 +4,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Modern Cafe Menu</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
+    * {
+      box-sizing: border-box;
+    }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #fff;
+      background-color: #f9f9f9;
+    }
+
+    .header {
+      padding: 20px;
     }
 
     .search-bar {
+      margin: 10px;
       padding: 10px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .search-bar input {
       width: 100%;
       padding: 10px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
+      border: none;
       font-size: 16px;
     }
 
-    .button-row {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin: 10px;
-    }
-
-    .button-row button {
-      padding: 8px 12px;
-      border-radius: 12px;
-      border: 1px solid #ccc;
-      background: white;
-      margin: 5px;
-      font-size: 14px;
-    }
-
     .banner {
-      margin: 20px;
-      border-radius: 12px;
+      margin: 0 10px;
       overflow: hidden;
+      border-radius: 12px;
     }
 
     .banner img {
@@ -53,24 +48,21 @@
     }
 
     .section-title {
-      padding: 0 16px;
+      margin: 20px 10px 10px;
       font-size: 20px;
       font-weight: bold;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
     }
 
     .circle-scroll {
       display: flex;
       overflow-x: auto;
-      padding: 10px 16px;
+      padding: 0 10px;
+      gap: 12px;
     }
 
     .circle-item {
       flex: 0 0 auto;
       text-align: center;
-      margin-right: 12px;
     }
 
     .circle-item img {
@@ -80,49 +72,41 @@
       object-fit: cover;
     }
 
-    .circle-item div {
-      margin-top: 5px;
-      font-size: 14px;
-    }
-
-    .products-scroll {
+    .products {
       display: flex;
       overflow-x: auto;
-      padding: 10px 16px;
+      padding: 0 10px 70px;
+      gap: 12px;
     }
 
     .product-card {
       background: #fff;
+      min-width: 150px;
       border-radius: 12px;
-      width: 150px;
-      margin-right: 12px;
-      flex: 0 0 auto;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .product-card img {
       width: 100%;
-      height: 120px;
+      height: 140px;
       object-fit: cover;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
     }
 
-    .product-card .info {
+    .info {
       padding: 10px;
-      font-size: 14px;
     }
 
-    .product-card .brand {
-      color: gray;
+    .brand {
       font-size: 12px;
+      color: gray;
     }
 
-    .product-card .name {
+    .name {
       font-weight: bold;
     }
 
-    .product-card .price {
+    .price {
       color: #00aa00;
       font-weight: bold;
     }
@@ -144,29 +128,19 @@
       font-size: 22px;
     }
   </style>
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="header">
+    <div class="search-bar">
+      <input type="text" placeholder="Search" />
+    </div>
 
-  <div class="search-bar">
-    <input type="text" placeholder="Search" />
+    <div class="banner">
+      <img src="images/banner.jpg" alt="Banner title" />
+    </div>
   </div>
 
-  <div class="button-row">
-    <button>❤️ Favorites</button>
-    <button>🔁 History</button>
-    <button>👤 Following</button>
-  </div>
-
-  <div class="banner">
-    <img src="images/banner.jpg" alt="Banner title" />
-  </div>
-
-  <div class="section-title">
-    <span>Categories</span>
-    <span>›</span>
-  </div>
-
+  <div class="section-title">Categories</div>
   <div class="circle-scroll">
     <div class="circle-item">
       <img src="images/coffee.jpg" alt="Coffee">
@@ -190,17 +164,13 @@
     </div>
   </div>
 
-  <div class="section-title">
-    <span>Popular Items</span>
-    <span>›</span>
-  </div>
-
-  <div class="products-scroll">
+  <div class="section-title">Popular Items</div>
+  <div class="products">
     <div class="product-card">
       <img src="images/radish.jpg" alt="Product">
       <div class="info">
         <div class="brand">Brand</div>
-        <div class="name">Product name</div>
+        <div class="name">Radish</div>
         <div class="price">$10.99</div>
       </div>
     </div>
@@ -208,7 +178,7 @@
       <img src="images/mushroom.jpg" alt="Product">
       <div class="info">
         <div class="brand">Brand</div>
-        <div class="name">Product name</div>
+        <div class="name">Mushroom</div>
         <div class="price">$10.99</div>
       </div>
     </div>
@@ -216,7 +186,7 @@
       <img src="images/cherries.jpg" alt="Product">
       <div class="info">
         <div class="brand">Brand</div>
-        <div class="name">Product name</div>
+        <div class="name">Cherries</div>
         <div class="price">$10.99</div>
       </div>
     </div>
@@ -224,11 +194,10 @@
 
   <div class="navbar">
     <i class="fas fa-home"></i>
-    <i class="fas fa-minus-circle"></i>
+    <i class="fas fa-dot-circle"></i>
     <i class="fas fa-shopping-cart"></i>
     <i class="fas fa-bell"></i>
     <i class="fas fa-user"></i>
   </div>
-
 </body>
 </html>
