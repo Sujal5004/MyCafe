@@ -6,10 +6,125 @@
   <title>Modern Cafe Menu</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9f9f9;
+      background-color: #fff;
+    }
+
+    .search-bar {
+      padding: 10px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    .button-row {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 10px;
+    }
+
+    .button-row button {
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      background: white;
+      margin: 5px;
+      font-size: 14px;
+    }
+
+    .banner {
+      margin: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .banner img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    .section-title {
+      padding: 0 16px;
+      font-size: 20px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .circle-scroll {
+      display: flex;
+      overflow-x: auto;
+      padding: 10px 16px;
+    }
+
+    .circle-item {
+      flex: 0 0 auto;
+      text-align: center;
+      margin-right: 12px;
+    }
+
+    .circle-item img {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .circle-item div {
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .products-scroll {
+      display: flex;
+      overflow-x: auto;
+      padding: 10px 16px;
+    }
+
+    .product-card {
+      background: #fff;
+      border-radius: 12px;
+      width: 150px;
+      margin-right: 12px;
+      flex: 0 0 auto;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+
+    .product-card .info {
+      padding: 10px;
+      font-size: 14px;
+    }
+
+    .product-card .brand {
+      color: gray;
+      font-size: 12px;
+    }
+
+    .product-card .name {
+      font-weight: bold;
+    }
+
+    .product-card .price {
+      color: #00aa00;
+      font-weight: bold;
     }
 
     .navbar {
@@ -28,147 +143,92 @@
     .navbar i {
       font-size: 22px;
     }
-
-    .section-title {
-      margin: 20px;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .banner {
-      margin: 20px;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .banner img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-    }
-
-    .circle-scroll {
-      display: flex;
-      overflow-x: auto;
-      padding: 0 20px;
-      margin-bottom: 20px;
-    }
-
-    .circle-item {
-      flex: 0 0 auto;
-      margin-right: 16px;
-      text-align: center;
-    }
-
-    .circle-item img {
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      object-fit: cover;
-    }
-
-    .products {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 0 10px 60px;
-    }
-
-    .product-card {
-      background: #fff;
-      width: 45%;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-    }
-
-    .product-card .info {
-      padding: 10px;
-    }
-
-    .product-card .info .brand {
-      font-size: 12px;
-      color: gray;
-    }
-
-    .product-card .info .name {
-      font-weight: bold;
-    }
-
-    .product-card .info .price {
-      color: #00aa00;
-      font-weight: bold;
-    }
   </style>
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-  <div class="banner">
-    <img id="bannerImg" src="https://via.placeholder.com/600x200" alt="Banner title" />
+  <div class="search-bar">
+    <input type="text" placeholder="Search" />
   </div>
 
-  <div class="section-title">Categories</div>
-  <div class="circle-scroll" id="categoryScroll"></div>
+  <div class="button-row">
+    <button>❤️ Favorites</button>
+    <button>🔁 History</button>
+    <button>👤 Following</button>
+  </div>
 
-  <div class="section-title">Popular Items</div>
-  <div class="products" id="productList"></div>
+  <div class="banner">
+    <img src="images/banner.jpg" alt="Banner title" />
+  </div>
+
+  <div class="section-title">
+    <span>Categories</span>
+    <span>›</span>
+  </div>
+
+  <div class="circle-scroll">
+    <div class="circle-item">
+      <img src="images/coffee.jpg" alt="Coffee">
+      <div>Coffee</div>
+    </div>
+    <div class="circle-item">
+      <img src="images/fries.jpg" alt="Fries">
+      <div>Fries</div>
+    </div>
+    <div class="circle-item">
+      <img src="images/burger.jpg" alt="Burger">
+      <div>Burger</div>
+    </div>
+    <div class="circle-item">
+      <img src="images/pizza.jpg" alt="Pizza">
+      <div>Pizza</div>
+    </div>
+    <div class="circle-item">
+      <img src="images/tea.jpg" alt="Tea">
+      <div>Tea</div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <span>Popular Items</span>
+    <span>›</span>
+  </div>
+
+  <div class="products-scroll">
+    <div class="product-card">
+      <img src="images/radish.jpg" alt="Product">
+      <div class="info">
+        <div class="brand">Brand</div>
+        <div class="name">Product name</div>
+        <div class="price">$10.99</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/mushroom.jpg" alt="Product">
+      <div class="info">
+        <div class="brand">Brand</div>
+        <div class="name">Product name</div>
+        <div class="price">$10.99</div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="images/cherries.jpg" alt="Product">
+      <div class="info">
+        <div class="brand">Brand</div>
+        <div class="name">Product name</div>
+        <div class="price">$10.99</div>
+      </div>
+    </div>
+  </div>
 
   <div class="navbar">
     <i class="fas fa-home"></i>
-    <i class="fas fa-search"></i>
+    <i class="fas fa-minus-circle"></i>
     <i class="fas fa-shopping-cart"></i>
     <i class="fas fa-bell"></i>
     <i class="fas fa-user"></i>
   </div>
-
-  <script>
-    const categories = [
-      { name: 'Coffee', image: 'coffee.jpg' },
-      { name: 'Fries', image: 'fries.jpg' },
-      { name: 'Burger', image: 'burger.jpg' },
-      { name: 'Pizza', image: 'pizza.jpg' },
-      { name: 'Tea', image: 'tea.jpg' }
-    ];
-
-    const products = [
-      { brand: 'Cafe Delight', name: 'Café de Olla', price: '$3.00', image: 'cafe_de_olla.jpg' },
-      { brand: 'Cafe Delight', name: 'Flat White', price: '$3.50', image: 'flat_white.jpg' },
-      { brand: 'Fast Bites', name: 'French Fries', price: '$2.50', image: 'fries.jpg' },
-      { brand: 'Fast Bites', name: 'Veg Roll', price: '$3.20', image: 'roll.jpg' }
-    ];
-
-    const categoryScroll = document.getElementById('categoryScroll');
-    categories.forEach(cat => {
-      categoryScroll.innerHTML += `
-        <div class="circle-item">
-          <img src="images/${cat.image}" alt="${cat.name}">
-          <div>${cat.name}</div>
-        </div>
-      `;
-    });
-
-    const productList = document.getElementById('productList');
-    products.forEach(prod => {
-      productList.innerHTML += `
-        <div class="product-card">
-          <img src="images/${prod.image}" alt="${prod.name}">
-          <div class="info">
-            <div class="brand">${prod.brand}</div>
-            <div class="name">${prod.name}</div>
-            <div class="price">${prod.price}</div>
-          </div>
-        </div>
-      `;
-    });
-  </script>
 
 </body>
 </html>
